@@ -24,6 +24,8 @@ void escolha(int mousex, int mousey);
 void xis();
 void bola();
 void fim(int);
+void desenhaXis(int, int);
+void desenhaBola(int, int);
 
 int main(int argc, char* argv[]){
     glutInit(&argc, argv);
@@ -90,6 +92,7 @@ void hashtag(){
 }
 
 void escolha(int mousex, int mousey){
+    if(estado==0){
     if(mousex >= 50 && mousex <= 250 && MAXY-mousey >= 450 && MAXY-mousey <= 650){
         if(turno%2==1 && campo[0]==0){
             campo[0]=1;
@@ -101,7 +104,6 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(0);
         }
-        printf("%d %d", turno, campo[0]);
     }
 
     if(mousex > 250 && mousex <= 450 && MAXY-mousey >= 450 && MAXY-mousey <= 650){
@@ -115,7 +117,6 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(1);
         }
-        printf("%d %d", turno, campo[1]);
     }
     if(mousex > 450 && mousex <= 650 && MAXY-mousey >= 450 && MAXY-mousey <= 650){
         if(turno%2==1 && campo[2]==0){
@@ -128,7 +129,6 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(2);
         }
-        printf("%d %d", turno, campo[2]);
     }
     if(mousex >= 50 && mousex <= 250 && MAXY-mousey >= 250 && MAXY-mousey < 450){
         if(turno%2==1 && campo[3]==0){
@@ -141,7 +141,6 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(3);
         }
-        printf("%d %d", turno, campo[3]);
     }
     if(mousex > 250 && mousex <= 450 && MAXY-mousey >= 250 && MAXY-mousey < 450){
         if(turno%2==1 && campo[4]==0){
@@ -154,7 +153,6 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(4);
         }
-        printf("%d %d", turno, campo[4]);
     }
     if(mousex > 450 && mousex <= 650 && MAXY-mousey >= 250 && MAXY-mousey < 450){
         if(turno%2==1 && campo[5]==0){
@@ -167,7 +165,6 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(5);
         }
-        printf("%d %d", turno, campo[5]);
     }
     if(mousex >= 50 && mousex <= 250 && MAXY-mousey >= 50 && MAXY-mousey < 250){
         if(turno%2==1 && campo[6]==0){
@@ -180,7 +177,6 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(6);
         }
-        printf("%d %d", turno, campo[6]);
     }
     if(mousex > 250 && mousex <= 450 && MAXY-mousey >= 50 && MAXY-mousey < 250){
         if(turno%2==1 && campo[7]==0){
@@ -193,7 +189,6 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(7);
         }
-        printf("%d %d", turno, campo[7]);
     }
     if(mousex > 450 && mousex <= 650 && MAXY-mousey >= 50 && MAXY-mousey < 250)
 {
@@ -207,187 +202,77 @@ void escolha(int mousex, int mousey){
             turno++;
             fim(8);
         }
-        printf("%d %d", turno, campo[8]);
+    }
     }
 }
 
 void xis(){
     if(campo[0]==1){
-        glBegin(GL_LINES);
-            glVertex2f(60,640);
-            glVertex2f(240,460);
-            glVertex2f(240,640);
-            glVertex2f(60,460);
-        glEnd();
+        desenhaXis(150,550);
     }
     if(campo[1]==1){
-        glBegin(GL_LINES);
-            glVertex2f(260,640);
-            glVertex2f(440,460);
-            glVertex2f(440,640);
-            glVertex2f(260,460);
-        glEnd();
+        desenhaXis(350,550);
     }
     if(campo[2]==1){
-        glBegin(GL_LINES);
-            glVertex2f(460,640);
-            glVertex2f(640,460);
-            glVertex2f(640,640);
-            glVertex2f(460,460);
-        glEnd();
+        desenhaXis(550,550);
     }
     if(campo[3]==1){
-        glBegin(GL_LINES);
-            glVertex2f(60,440);
-            glVertex2f(240,260);
-            glVertex2f(240,440);
-            glVertex2f(60,260);
-        glEnd();
+        desenhaXis(150,350);
     }
     if(campo[4]==1){
-        glBegin(GL_LINES);
-            glVertex2f(260,440);
-            glVertex2f(440,260);
-            glVertex2f(440,440);
-            glVertex2f(260,260);
-        glEnd();
+        desenhaXis(350,350);
     }
     if(campo[5]==1){
-        glBegin(GL_LINES);
-            glVertex2f(460,440);
-            glVertex2f(640,260);
-            glVertex2f(640,440);
-            glVertex2f(460,260);
-        glEnd();
+        desenhaXis(550,350);
     }
     if(campo[6]==1){
-        glBegin(GL_LINES);
-            glVertex2f(60,240);
-            glVertex2f(240,60);
-            glVertex2f(240,240);
-            glVertex2f(60,60);
-        glEnd();
+        desenhaXis(150,150);
     }
     if(campo[7]==1){
-        glBegin(GL_LINES);
-            glVertex2f(260,240);
-            glVertex2f(440,60);
-            glVertex2f(440,240);
-            glVertex2f(260,60);
-        glEnd();
+        desenhaXis(350,150);
     }
     if(campo[8]==1){
-        glBegin(GL_LINES);
-            glVertex2f(460,240);
-            glVertex2f(640,60);
-            glVertex2f(640,240);
-            glVertex2f(460,60);
-        glEnd();
+        desenhaXis(550,150);
     }
 }
 
 void bola(){
-    GLfloat escala = 1;
-    int i = 0;
-    float ang, x, y;
     if(campo[0]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 150 + (cos(ang) * 90);
-            y = 550 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(150, 550);
     }
     if(campo[1]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 350 + (cos(ang) * 90);
-            y = 550 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(350, 550);
     }
     if(campo[2]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 550 + (cos(ang) * 90);
-            y = 550 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(550, 550);
     }
     if(campo[3]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 150 + (cos(ang) * 90);
-            y = 350 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(150, 350);
     }
     if(campo[4]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 350 + (cos(ang) * 90);
-            y = 350 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(350, 350);
     }
     if(campo[5]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 550 + (cos(ang) * 90);
-            y = 350 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(550, 350);
     }
     if(campo[6]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 150 + (cos(ang) * 90);
-            y = 150 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(150, 150);
     }
     if(campo[7]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 350 + (cos(ang) * 90);
-            y = 150 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(350, 150);
     }
     if(campo[8]==2){
-        glBegin(GL_LINE_LOOP);
-        for (i = 0; i < 360; i++) {
-            ang = (i * PI) / 180.0;
-            x = 550 + (cos(ang) * 90);
-            y = 150 + (sin(ang) * 90);
-            glVertex2f(x, y);
-        }
-     glEnd();
+        desenhaBola(550, 150);
     }
 }
 
 void fim(int lugar){
+    printf("%d %d\n", turno, campo[lugar]);
     if(turno >= 10){
         estado = 3;
         return;
     }
-    if(turno%2==1){
+    if(turno%2==0){
         if(lugar==0){
             if(campo[1]==1 && campo[2]==1)
                 estado = 1;
@@ -455,7 +340,7 @@ void fim(int lugar){
                 estado = 1;
         }
     }
-    if(turno%2==0){
+    if(turno%2==1){
         if(lugar==0){
             if(campo[1]==2 && campo[2]==2)
                 estado = 2;
@@ -521,6 +406,30 @@ void fim(int lugar){
                 estado = 2;
             if(campo[6]==2 && campo[7]==2)
                 estado = 2;
+
         }
     }
+}
+
+void desenhaXis(int x, int y){
+    glBegin(GL_LINES);
+            glVertex2f(x-90,y+90);
+            glVertex2f(x+90,y-90);
+            glVertex2f(x+90,y+90);
+            glVertex2f(x-90,y-90);
+    glEnd();
+}
+
+void desenhaBola(int centrox, int centroy){
+    GLfloat escala = 1;
+    int i = 0;
+    float ang, x, y;
+    glBegin(GL_LINE_LOOP);
+        for (i = 0; i < 360; i++) {
+            ang = (i * PI) / 180.0;
+            x = centrox + (cos(ang) * 90);
+            y = centroy + (sin(ang) * 90);
+            glVertex2f(x, y);
+        }
+     glEnd();
 }
